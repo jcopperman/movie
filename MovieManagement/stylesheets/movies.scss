@@ -1,0 +1,55 @@
+// Custom variables
+$break: 40px;
+$search-pad: 20px;
+$horizontal-rule: solid 1px rgb(221, 221, 221);
+$genre-spacing:5px;
+
+
+body {
+    padding-top: $break;
+}
+
+/* Search box for table */
+.search-box {
+    border-bottom: $horizontal-rule;
+    padding-bottom: $search-pad;
+
+    label {
+        padding-right: $search-pad;
+    }
+}
+
+/* Fade in and out */
+.fade-in-out {
+    -webkit-transition: 0.5s linear all;
+    -moz-transition: 0.5s linear all;
+    -o-transition: 0.5s linear all;
+    transition: 0.5s linear all;
+}
+
+.fade-in-out.ng-hide {
+    opacity: 0;
+}
+
+.fade-in-out.ng-show {
+    opacity: 1;
+}
+
+
+// Movie Add section
+.add-movie-section{
+    margin-bottom: $break;
+    border-bottom: $horizontal-rule;
+}
+
+.genre-labels{
+    padding-top: $genre-spacing;  
+    
+    label{
+         margin-right: $genre-spacing;         
+    } 
+    label:hover{
+        cursor:pointer;
+    }
+}
+

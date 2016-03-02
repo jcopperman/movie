@@ -1,0 +1,35 @@
+body {
+  padding-top: 40px; }
+
+/* Search box for table */
+.search-box {
+  border-bottom: solid 1px #dddddd;
+  padding-bottom: 20px; }
+  .search-box label {
+    padding-right: 20px; }
+
+/* Fade in and out */
+.fade-in-out {
+  -webkit-transition: 0.5s linear all;
+  -moz-transition: 0.5s linear all;
+  -o-transition: 0.5s linear all;
+  transition: 0.5s linear all; }
+
+.fade-in-out.ng-hide {
+  opacity: 0; }
+
+.fade-in-out.ng-show {
+  opacity: 1; }
+
+.add-movie-section {
+  margin-bottom: 40px;
+  border-bottom: solid 1px #dddddd; }
+
+.genre-labels {
+  padding-top: 5px; }
+  .genre-labels label {
+    margin-right: 5px; }
+  .genre-labels label:hover {
+    cursor: pointer; }
+
+/*# sourceMappingURL=movies.css.map */

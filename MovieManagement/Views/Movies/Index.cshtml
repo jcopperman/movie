@@ -1,0 +1,107 @@
+﻿@{
+    ViewBag.Title = "Movie Management";
+}
+<!-- As there is only one page, that doesn't require its own specific stylesheet, this is unnecessary-->
+<!-- Its here purely to show that I understand the concept -->
+<!-- Render page level style -->
+@section Styles {
+    @Styles.Render("~/stylesheets/movies")
+}
+
+
+<body ng-app="movieApp">
+    <!-- Init angular controller -->
+    <!-- container -->
+    <div class="container" ng-controller="moviesCtrl">
+        <div class="page-header text-center">
+            <h1>{{header}}</h1>
+            <p>Manage a listing of all those great movies you need to watch</p>
+        </div>
+
+        <div class="add-movie-section">
+            <div class="text-center">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">Title: </label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" ng-model="title" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-3" >Release Date: </label>
+                        <div class="col-sm-6">
+                            <div class="input-group">
+                                <input type="text" id="released" class="form-control datepicker" />
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">Genre: </label>
+                        <div class="col-sm-6">
+                            <select name="selGenres" id="selGenres" class="form-control" ng-disabled="!genresForSelect.genreOptions.length > 0"
+                                    ng-options="option.name for option in genresForSelect.genreOptions track by option.id"
+                                    ng-model="genresForSelect.selectedGenre"></select>
+                        </div>
+                        <div class="col-sm-3">
+                            <button ng-click="addGenre()" class="btn btn-primary btn-block" ng-disabled="!genresForSelect.genreOptions.length > 0">Add Genre</button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">Selected Genres: </label>
+                        <div class="col-sm-6 text-left genre-labels">
+                            <label title="Click to remove" class="label label-info col-md-3  col-xs-4" ng-repeat="genre in selectedGenres"
+                                   ng-click="removeSelectedGenre(genre)">
+                                {{genre.name}}&nbsp;&nbsp;
+                                <i class="glyphicon glyphicon-remove"></i>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-6 col-sm-3 col-xs-12 text-right">
+                            <button ng-click="addMovie()" class="btn btn-success btn-block">Add Movie</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="row">
+            <div class="form-inline search-box col-xs-12">
+                <div class="form-group col-xs-12 col-sm-6 col-sm-offset-6 text-right">
+                    <label for="txtSearch" class="fade-in-out" ng-show="searchText">Search</label>
+                    <input type="text" name="txtSearch" ng-model="searchText" class="form-control" placeholder="Search..." />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <table class="col-xs-12 table table-responsive">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Genres</th>
+                        <th>Released</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="movie in movies | filter: searchText">
+                        <td>{{movie.title}}</td>
+                        <td>{{movie.genres}}</td>
+                        <td>{{movie.released}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+
+    </div><!-- /.container -->
+
+
+</body>
